@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "license": "UNRESOLVED — complete a rights review before use",
+  "source": "UNRESOLVED",
+  "privacy_reviewed": false,
+  "approved_for_training": false,
+  "synthetic_fixture": false,
+  "classes": ["stairs", "pathway_obstruction", "damaged_pavement", "ramp_obstruction", "no_visible_target"],
+  "records": []
+}

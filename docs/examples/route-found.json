@@ -1,0 +1,183 @@
+{
+  "status": "found",
+  "campus_id": "22c94eb0-b3c9-55ac-a2f2-775cab700313",
+  "source_id": "c383879c-4ef2-57fe-8fba-1989a97139e8",
+  "destination_id": "541014f8-1994-53a9-bebc-d02d0be8e2f2",
+  "accessibility_profile": {
+    "avoid_stairs": true,
+    "max_slope_pct": 8,
+    "min_width_m": 0.9,
+    "excluded_surfaces": [
+      "uneven",
+      "gravel"
+    ],
+    "unknown_policy": "exclude",
+    "travel_speed_mps": 1.0
+  },
+  "graph_version": "1",
+  "policy_version": "accessibility-v1",
+  "cost_model_version": "walking-effort-v1",
+  "profile_fingerprint": "7a8f45501edd826805c930c6ef8e4982f7c9040aa802317b8918e57f488264bf",
+  "validated_at": "2026-10-12T06:00:00Z",
+  "valid_until": "2026-11-11T06:00:00Z",
+  "data_origin": "synthetic_demo",
+  "algorithm": "astar",
+  "primary": {
+    "node_ids": [
+      "c383879c-4ef2-57fe-8fba-1989a97139e8",
+      "e373c5f4-5e5c-5bfd-9f16-f3904be445cc",
+      "c4e0f18a-2ecb-5d37-a97e-2a2e844d5fbc",
+      "541014f8-1994-53a9-bebc-d02d0be8e2f2"
+    ],
+    "arcs": [
+      {
+        "edge_id": "084596cf-2208-5e5d-a0b6-271916029600",
+        "direction": "forward"
+      },
+      {
+        "edge_id": "25313664-939d-5091-b078-399ffc0e5d8d",
+        "direction": "forward"
+      },
+      {
+        "edge_id": "9eb0909f-53da-57e7-af01-eaba7ea82e64",
+        "direction": "forward"
+      }
+    ],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          8.983111749910169e-05
+        ],
+        [
+          0.00017966223499820338,
+          8.983111749910169e-05
+        ],
+        [
+          0.00017966223499820338,
+          0.0
+        ]
+      ]
+    },
+    "total_distance_m": 40.0,
+    "estimated_duration_s": 40.0,
+    "cost_m_equivalent": 41.6,
+    "instructions": [
+      {
+        "edge_id": "084596cf-2208-5e5d-a0b6-271916029600",
+        "distance_m": 10.0,
+        "text": "Continue along the synthetic demonstration path."
+      },
+      {
+        "edge_id": "25313664-939d-5091-b078-399ffc0e5d8d",
+        "distance_m": 20.0,
+        "text": "Continue along the synthetic demonstration path."
+      },
+      {
+        "edge_id": "9eb0909f-53da-57e7-af01-eaba7ea82e64",
+        "distance_m": 10.0,
+        "text": "Continue along the synthetic demonstration path."
+      }
+    ],
+    "verification": {
+      "summary": "observations_current",
+      "verified_distance_m": 40.0,
+      "uncertain_distance_m": 0,
+      "earliest_expiry_at": "2026-11-11T06:00:00Z"
+    },
+    "warnings": [
+      {
+        "code": "SYNTHETIC_DATA",
+        "message": "Fictional demonstration data; not a verified campus map.",
+        "edge_ids": []
+      },
+      {
+        "code": "DURATION_ESTIMATE",
+        "message": "Duration uses selected travel speed and excludes unmeasured delays.",
+        "edge_ids": []
+      }
+    ]
+  },
+  "alternatives": [
+    {
+      "node_ids": [
+        "c383879c-4ef2-57fe-8fba-1989a97139e8",
+        "5139444d-cf59-5cbf-a107-51f65386aeac",
+        "541014f8-1994-53a9-bebc-d02d0be8e2f2"
+      ],
+      "arcs": [
+        {
+          "edge_id": "828015c7-a62c-5f8d-81dd-632331043726",
+          "direction": "forward"
+        },
+        {
+          "edge_id": "6213962b-d84a-59a4-8b22-ac4a304168da",
+          "direction": "forward"
+        }
+      ],
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            8.983111749910169e-05,
+            -0.00017966223499820338
+          ],
+          [
+            0.00017966223499820338,
+            0.0
+          ]
+        ]
+      },
+      "total_distance_m": 44.721359549995796,
+      "estimated_duration_s": 44.721359549995796,
+      "cost_m_equivalent": 44.721359549995796,
+      "instructions": [
+        {
+          "edge_id": "828015c7-a62c-5f8d-81dd-632331043726",
+          "distance_m": 22.360679774997898,
+          "text": "Continue along the synthetic demonstration path."
+        },
+        {
+          "edge_id": "6213962b-d84a-59a4-8b22-ac4a304168da",
+          "distance_m": 22.360679774997898,
+          "text": "Continue along the synthetic demonstration path."
+        }
+      ],
+      "verification": {
+        "summary": "observations_current",
+        "verified_distance_m": 44.721359549995796,
+        "uncertain_distance_m": 0,
+        "earliest_expiry_at": "2026-11-11T06:00:00Z"
+      },
+      "warnings": [
+        {
+          "code": "SYNTHETIC_DATA",
+          "message": "Fictional demonstration data; not a verified campus map.",
+          "edge_ids": []
+        },
+        {
+          "code": "DURATION_ESTIMATE",
+          "message": "Duration uses selected travel speed and excludes unmeasured delays.",
+          "edge_ids": []
+        }
+      ]
+    }
+  ],
+  "alternatives_exhaustive": true,
+  "warnings": [
+    {
+      "code": "SYNTHETIC_DATA",
+      "message": "Authored contract example, not an API response.",
+      "edge_ids": []
+    }
+  ]
+}

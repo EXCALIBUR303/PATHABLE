@@ -1,0 +1,18 @@
+{
+  "campus_id": "22c94eb0-b3c9-55ac-a2f2-775cab700313",
+  "source_id": "c383879c-4ef2-57fe-8fba-1989a97139e8",
+  "destination_id": "541014f8-1994-53a9-bebc-d02d0be8e2f2",
+  "accessibility_profile": {
+    "avoid_stairs": true,
+    "max_slope_pct": 8,
+    "min_width_m": 0.9,
+    "excluded_surfaces": [
+      "uneven",
+      "gravel"
+    ],
+    "unknown_policy": "exclude",
+    "travel_speed_mps": 1.0
+  },
+  "selected_algorithm": "astar",
+  "alternatives_limit": 2
+}

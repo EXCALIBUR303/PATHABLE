@@ -1,0 +1,257 @@
+{
+  "data_origin": "synthetic_demo",
+  "purpose": "Phase 0 numerical design oracle; not production seed",
+  "nodes": [
+    {
+      "id": "s",
+      "xy_m": [
+        0,
+        0
+      ],
+      "lon_lat": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "a",
+      "xy_m": [
+        10,
+        0
+      ],
+      "lon_lat": [
+        8.983111749910169e-05,
+        0.0
+      ]
+    },
+    {
+      "id": "t",
+      "xy_m": [
+        20,
+        0
+      ],
+      "lon_lat": [
+        0.00017966223499820338,
+        0.0
+      ]
+    },
+    {
+      "id": "b",
+      "xy_m": [
+        0,
+        10
+      ],
+      "lon_lat": [
+        0.0,
+        8.983111749910169e-05
+      ]
+    },
+    {
+      "id": "c",
+      "xy_m": [
+        20,
+        10
+      ],
+      "lon_lat": [
+        0.00017966223499820338,
+        8.983111749910169e-05
+      ]
+    },
+    {
+      "id": "d",
+      "xy_m": [
+        10,
+        -20
+      ],
+      "lon_lat": [
+        8.983111749910169e-05,
+        -0.00017966223499820338
+      ]
+    },
+    {
+      "id": "u",
+      "xy_m": [
+        30,
+        0
+      ],
+      "lon_lat": [
+        0.00026949335249730504,
+        0.0
+      ]
+    },
+    {
+      "id": "isolated",
+      "xy_m": [
+        50,
+        50
+      ],
+      "lon_lat": [
+        0.0004491555874955084,
+        0.0004491555874955084
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "stairs-west",
+      "source": "s",
+      "target": "a",
+      "distance_m": 10.0,
+      "direction": "both",
+      "availability": "open",
+      "accessibility": "accessible",
+      "verification": "verified",
+      "width_m": 1.2,
+      "slope_pct": 0,
+      "surface": "smooth",
+      "has_stairs": true
+    },
+    {
+      "id": "stairs-east",
+      "source": "a",
+      "target": "t",
+      "distance_m": 10.0,
+      "direction": "forward",
+      "availability": "open",
+      "accessibility": "accessible",
+      "verification": "verified",
+      "width_m": 1.2,
+      "slope_pct": 0,
+      "surface": "smooth",
+      "has_stairs": true
+    },
+    {
+      "id": "upper-west",
+      "source": "s",
+      "target": "b",
+      "distance_m": 10.0,
+      "direction": "both",
+      "availability": "open",
+      "accessibility": "accessible",
+      "verification": "verified",
+      "width_m": 1.2,
+      "slope_pct": 0,
+      "surface": "smooth",
+      "has_stairs": false
+    },
+    {
+      "id": "ramp-cross",
+      "source": "b",
+      "target": "c",
+      "distance_m": 20.0,
+      "direction": "both",
+      "availability": "open",
+      "accessibility": "accessible",
+      "verification": "verified",
+      "width_m": 1.2,
+      "slope_pct": 4,
+      "surface": "smooth",
+      "has_stairs": false
+    },
+    {
+      "id": "upper-east",
+      "source": "c",
+      "target": "t",
+      "distance_m": 10.0,
+      "direction": "both",
+      "availability": "open",
+      "accessibility": "accessible",
+      "verification": "verified",
+      "width_m": 1.2,
+      "slope_pct": 0,
+      "surface": "smooth",
+      "has_stairs": false
+    },
+    {
+      "id": "lower-west",
+      "source": "s",
+      "target": "d",
+      "distance_m": 22.360679774997898,
+      "direction": "both",
+      "availability": "open",
+      "accessibility": "accessible",
+      "verification": "verified",
+      "width_m": 1.2,
+      "slope_pct": 0,
+      "surface": "smooth",
+      "has_stairs": false
+    },
+    {
+      "id": "lower-east",
+      "source": "d",
+      "target": "t",
+      "distance_m": 22.360679774997898,
+      "direction": "both",
+      "availability": "open",
+      "accessibility": "accessible",
+      "verification": "verified",
+      "width_m": 1.2,
+      "slope_pct": 0,
+      "surface": "smooth",
+      "has_stairs": false
+    },
+    {
+      "id": "unknown-direct",
+      "source": "s",
+      "target": "t",
+      "distance_m": 20.0,
+      "direction": "both",
+      "availability": "open",
+      "accessibility": "unknown",
+      "verification": "unverified",
+      "width_m": null,
+      "slope_pct": null,
+      "surface": "unknown",
+      "has_stairs": null
+    },
+    {
+      "id": "gravel-west",
+      "source": "s",
+      "target": "u",
+      "distance_m": 30.0,
+      "direction": "both",
+      "availability": "open",
+      "accessibility": "accessible",
+      "verification": "verified",
+      "width_m": 1.2,
+      "slope_pct": 0,
+      "surface": "gravel",
+      "has_stairs": false
+    },
+    {
+      "id": "gravel-east",
+      "source": "u",
+      "target": "t",
+      "distance_m": 10.0,
+      "direction": "both",
+      "availability": "open",
+      "accessibility": "accessible",
+      "verification": "verified",
+      "width_m": 1.2,
+      "slope_pct": 0,
+      "surface": "gravel",
+      "has_stairs": false
+    }
+  ],
+  "profiles": {
+    "wheelchair": {
+      "avoid_stairs": true,
+      "max_slope_pct": 8,
+      "min_width_m": 0.9,
+      "excluded_surfaces": [
+        "uneven",
+        "gravel"
+      ],
+      "unknown_policy": "exclude",
+      "travel_speed_mps": 1.0
+    },
+    "general": {
+      "avoid_stairs": false,
+      "max_slope_pct": null,
+      "min_width_m": null,
+      "excluded_surfaces": [],
+      "unknown_policy": "exclude",
+      "travel_speed_mps": 1.0
+    }
+  }
+}

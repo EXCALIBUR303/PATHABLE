@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-13",
+  "state": "uncommitted unborn work; no remote deployment/publication",
+  "restore": {
+    "source_project": "pathable-release-test-394e24321d",
+    "restored_project": "pathable-release-restore-e9ebab18b8",
+    "migration_revision": "0003_ml",
+    "backup_file_count": 3,
+    "result": "passed",
+    "scope": "synthetic local release fixture, not trained ML or remote deployment"
+  },
+  "clean_source": {
+    "source_export": ".local/release-clean-0e5e507538",
+    "result": "passed",
+    "scope": "Local nonignored source export; remote Git clone/CI execution not verified"
+  },
+  "scope": "Synthetic local HTTPS release validation, not product hazard evaluation, remote clone or hosted CI"
+}

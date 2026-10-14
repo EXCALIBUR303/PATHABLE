@@ -1,0 +1,5 @@
+# Optional Linux x86_64 / Python 3.12 CPU runtime; core application stays independent.
+torch @ https://download-r2.pytorch.org/whl/cpu/torch-2.14.1%2Bcpu-cp312-cp312-manylinux_2_28_x86_64.whl
+numpy==2.5.4
+safetensors==0.8.0
+Pillow==12.3.0

@@ -1,0 +1,9 @@
+# Design fixtures
+
+These are **synthetic numerical examples for Phase 0**, not a real campus seed or implementation output. `campus-graph.json` uses short human-readable IDs and local XY metres for hand-checkable lengths. Its tiny WGS84 coordinates near (0,0) exist solely to check the ECEF lower-bound formula; this is not a surveyed place. Application seeds must instead use real GeoJSON geometry with PostGIS-derived distance and UUID keys.
+
+The connected component contains a 20m stairs shortcut, a 40m step-free upper route (4% ramp on its 20m cross edge), a 44.72135955m lower alternative, an unknown direct edge, and a gravel alternative. A separate isolated test node intentionally exercises disconnection. Stairs-east is one-way. Every other edge is bidirectional. For the wheelchair preset, the optimal cost is `10 + 20*1.08 + 10 = 41.6` metre-equivalent; duration at 1m/s is 40s. Closing the upper ramp selects the lower alternative; closing both admissible choices produces no route.
+
+`routing-cases.json` describes expected behavior with explicit profile/edge/closure overrides. The validator enumerates all simple paths, not Dijkstra or A*, and asserts expected independently stated costs/results. Fixture expectations are design checks only; production algorithm equivalence and API behavior remain unrun until Phase 3.
+
+`route-request.json`, `route-found.json`, and `route-no-route.json` illustrate the wire contract using stable UUIDs mapped from fixture aliases. They are authored examples, not captured server responses. The found response demonstrates the fixture's primary route and one distinct alternative; no-route demonstrates both admissible choices closed. Decimal graph versions and Point/LineString distinctions follow the API contract. The example response's future validity deadline is illustrative, not a current infrastructure claim.

@@ -1,0 +1,44 @@
+{
+  "status": "no_route",
+  "campus_id": "22c94eb0-b3c9-55ac-a2f2-775cab700313",
+  "source_id": "c383879c-4ef2-57fe-8fba-1989a97139e8",
+  "destination_id": "541014f8-1994-53a9-bebc-d02d0be8e2f2",
+  "accessibility_profile": {
+    "avoid_stairs": true,
+    "max_slope_pct": 8,
+    "min_width_m": 0.9,
+    "excluded_surfaces": [
+      "uneven",
+      "gravel"
+    ],
+    "unknown_policy": "exclude",
+    "travel_speed_mps": 1.0
+  },
+  "graph_version": "2",
+  "policy_version": "accessibility-v1",
+  "cost_model_version": "walking-effort-v1",
+  "profile_fingerprint": "7a8f45501edd826805c930c6ef8e4982f7c9040aa802317b8918e57f488264bf",
+  "validated_at": "2026-10-12T06:00:00Z",
+  "valid_until": "2026-11-11T06:00:00Z",
+  "data_origin": "synthetic_demo",
+  "algorithm": "astar",
+  "reason": "constraints_exclude_all_paths",
+  "excluded_edge_counts": {
+    "closed": 2,
+    "stairs": 2,
+    "surface": 3,
+    "unknown": 1,
+    "slope_unproven": 1,
+    "width_unproven": 1,
+    "stairs_unproven": 1
+  },
+  "primary": null,
+  "alternatives": [],
+  "warnings": [
+    {
+      "code": "SYNTHETIC_DATA",
+      "message": "Authored example with ramp-cross and lower-west closed.",
+      "edge_ids": []
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+!.env.release.example
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.coverage
+htmlcov/
+
+# JavaScript / browser testing
+node_modules/
+dist/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# Runtime artifacts
+.local/
+uploads/
+*.log
+*.pid
+*.sqlite*
+.DS_Store
+
+# External ML assets; keep small documentation/manifests in Git
+ml/datasets/raw/
+ml/datasets/processed/
+ml/artifacts/
+*.pt
+*.pth
+*.onnx
+
+# Safe tensor assets are external ML artifacts too
+*.safetensors

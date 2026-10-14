@@ -1,0 +1,15 @@
+{
+  "restore": {
+    "source_project": "pathable-release-test-87d235c24f",
+    "restored_project": "pathable-release-restore-428ac5f93a",
+    "migration_revision": "0003_ml",
+    "backup_file_count": 3,
+    "result": "passed",
+    "scope": "synthetic local release fixture, not trained ML or remote deployment"
+  },
+  "clean_source": {
+    "source_export": ".local/release-clean-383bde4ea4",
+    "result": "passed",
+    "scope": "Local nonignored source export; remote Git clone/CI execution not verified"
+  }
+}

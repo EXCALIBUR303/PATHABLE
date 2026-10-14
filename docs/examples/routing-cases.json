@@ -1,0 +1,207 @@
+[
+  {
+    "id": "unconstrained_stairs",
+    "source": "s",
+    "destination": "t",
+    "profile": "general",
+    "blocked_edges": [],
+    "edge_overrides": {},
+    "profile_overrides": {},
+    "expected_cost": 20,
+    "expected_edges": [
+      "stairs-west",
+      "stairs-east"
+    ]
+  },
+  {
+    "id": "wheelchair_upper",
+    "source": "s",
+    "destination": "t",
+    "profile": "wheelchair",
+    "blocked_edges": [],
+    "edge_overrides": {},
+    "profile_overrides": {},
+    "expected_cost": 41.6,
+    "expected_edges": [
+      "upper-west",
+      "ramp-cross",
+      "upper-east"
+    ]
+  },
+  {
+    "id": "blocked_ramp_detour",
+    "source": "s",
+    "destination": "t",
+    "profile": "wheelchair",
+    "blocked_edges": [
+      "ramp-cross"
+    ],
+    "edge_overrides": {},
+    "profile_overrides": {},
+    "expected_cost": 44.721359549995796,
+    "expected_edges": [
+      "lower-west",
+      "lower-east"
+    ]
+  },
+  {
+    "id": "no_admissible_route",
+    "source": "s",
+    "destination": "t",
+    "profile": "wheelchair",
+    "blocked_edges": [
+      "ramp-cross",
+      "lower-west"
+    ],
+    "edge_overrides": {},
+    "profile_overrides": {},
+    "expected_cost": null,
+    "expected_edges": null
+  },
+  {
+    "id": "unknown_cannot_prove_hard_limits",
+    "source": "s",
+    "destination": "t",
+    "profile": "wheelchair",
+    "blocked_edges": [
+      "ramp-cross",
+      "lower-west"
+    ],
+    "edge_overrides": {},
+    "profile_overrides": {
+      "unknown_policy": "allow_with_warning"
+    },
+    "expected_cost": null,
+    "expected_edges": null
+  },
+  {
+    "id": "permissive_unknown_warns",
+    "source": "s",
+    "destination": "t",
+    "profile": "general",
+    "blocked_edges": [
+      "stairs-west",
+      "ramp-cross",
+      "lower-west",
+      "gravel-west"
+    ],
+    "edge_overrides": {},
+    "profile_overrides": {
+      "unknown_policy": "allow_with_warning"
+    },
+    "expected_cost": 33,
+    "expected_edges": [
+      "unknown-direct"
+    ],
+    "expected_uncertainty": true
+  },
+  {
+    "id": "steep_edges_excluded",
+    "source": "s",
+    "destination": "t",
+    "profile": "wheelchair",
+    "blocked_edges": [],
+    "edge_overrides": {
+      "ramp-cross": {
+        "slope_pct": 9
+      },
+      "lower-west": {
+        "slope_pct": 9
+      }
+    },
+    "profile_overrides": {},
+    "expected_cost": null,
+    "expected_edges": null
+  },
+  {
+    "id": "narrow_edges_excluded",
+    "source": "s",
+    "destination": "t",
+    "profile": "wheelchair",
+    "blocked_edges": [],
+    "edge_overrides": {
+      "upper-west": {
+        "width_m": 0.8
+      },
+      "lower-west": {
+        "width_m": 0.8
+      }
+    },
+    "profile_overrides": {},
+    "expected_cost": null,
+    "expected_edges": null
+  },
+  {
+    "id": "unknown_width_excluded",
+    "source": "s",
+    "destination": "t",
+    "profile": "wheelchair",
+    "blocked_edges": [],
+    "edge_overrides": {
+      "ramp-cross": {
+        "width_m": null
+      }
+    },
+    "profile_overrides": {},
+    "expected_cost": 44.721359549995796,
+    "expected_edges": [
+      "lower-west",
+      "lower-east"
+    ]
+  },
+  {
+    "id": "stale_measurement_excluded",
+    "source": "s",
+    "destination": "t",
+    "profile": "wheelchair",
+    "blocked_edges": [],
+    "edge_overrides": {
+      "ramp-cross": {
+        "verification": "needs_review"
+      }
+    },
+    "profile_overrides": {},
+    "expected_cost": 44.721359549995796,
+    "expected_edges": [
+      "lower-west",
+      "lower-east"
+    ]
+  },
+  {
+    "id": "same_node",
+    "source": "s",
+    "destination": "s",
+    "profile": "wheelchair",
+    "blocked_edges": [],
+    "edge_overrides": {},
+    "profile_overrides": {},
+    "expected_cost": 0,
+    "expected_edges": []
+  },
+  {
+    "id": "disconnected",
+    "source": "s",
+    "destination": "isolated",
+    "profile": "wheelchair",
+    "blocked_edges": [],
+    "edge_overrides": {},
+    "profile_overrides": {},
+    "expected_cost": null,
+    "expected_edges": null
+  },
+  {
+    "id": "one_way_reverse",
+    "source": "t",
+    "destination": "s",
+    "profile": "general",
+    "blocked_edges": [],
+    "edge_overrides": {},
+    "profile_overrides": {},
+    "expected_cost": 41.6,
+    "expected_edges": [
+      "upper-east",
+      "ramp-cross",
+      "upper-west"
+    ]
+  }
+]

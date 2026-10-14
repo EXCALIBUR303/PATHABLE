@@ -1,0 +1,117 @@
+name: ${RELEASE_PROJECT:-pathable-release}
+x-runtime: &runtime
+  APP_ENV: production
+  APP_ORIGIN: ${APP_ORIGIN:?Configure the exact HTTPS origin}
+  SESSION_COOKIE_SECURE: "true"
+  POSTGRES_HOST: db
+  POSTGRES_PORT: "5432"
+  POSTGRES_DB: ${POSTGRES_DB:?Configure release DB name}
+  POSTGRES_USER: ${POSTGRES_USER:?Configure owner role name}
+  APP_DB_USER: ${APP_DB_USER:?Configure restricted role name}
+  APP_DB_PASSWORD: ${APP_DB_PASSWORD:?Configure private application credential}
+  CSRF_SECRET: ${CSRF_SECRET:?Configure private CSRF secret}
+  RATE_LIMIT_HASH_KEY: ${RATE_LIMIT_HASH_KEY:?Configure private rate key}
+  UPLOAD_ROOT: /private/uploads
+  ML_ASSET_ROOT: /private/models
+  ML_ENABLED: "false"
+  ML_WORKER_DB_USER: ${ML_WORKER_DB_USER:-pathable_ml_worker}
+x-api: &api
+  platform: linux/amd64
+  image: ${RELEASE_API_IMAGE:-pathable-api:local}
+  build:
+    context: .
+    dockerfile: deploy/api.Dockerfile
+    additional_contexts:
+      wheels: .local/release-build/wheels
+    platforms: [linux/amd64]
+  user: ${RELEASE_UID:-10001}:${RELEASE_GID:-10001}
+  read_only: true
+  tmpfs:
+    - /tmp:size=128m,mode=1777
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  mem_limit: 2g
+  cpus: 2
+  pids_limit: 128
+  stop_grace_period: 30s
+services:
+  db:
+    image: postgis/postgis:17-3.5@sha256:01a6a70e41e6c4467c8f55f6063555ed72db2d6662cd0d571040d42eadaeb6f6
+    platform: linux/amd64
+    environment:
+      # Bootstrap separately; app databases are explicitly created by migration
+      # or restore, avoiding PostGIS image initialization schemas in the target.
+      POSTGRES_DB: postgres
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Configure private owner credential}
+    volumes:
+      - database:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -h 127.0.0.1 -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+    mem_limit: 2g
+    cpus: 2
+    pids_limit: 256
+    stop_grace_period: 30s
+  api:
+    <<: *api
+    environment: *runtime
+    volumes:
+      - ${RELEASE_UPLOAD_ROOT:?Configure private uploads}:/private/uploads
+      - ${RELEASE_MODEL_ROOT:?Configure private models}:/private/models:ro
+    depends_on:
+      db: { condition: service_healthy }
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health/ready', timeout=3)"]
+      interval: 5s
+      timeout: 4s
+      retries: 12
+    restart: unless-stopped
+  web:
+    platform: linux/amd64
+    image: ${RELEASE_WEB_IMAGE:-pathable-web:local}
+    build:
+      context: .
+      dockerfile: deploy/web.Dockerfile
+      additional_contexts:
+        npm_cache: .local/release-build/npm-cache/_cacache
+      platforms: [linux/amd64]
+    user: ${RELEASE_UID:-10001}:${RELEASE_GID:-10001}
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 256m
+    cpus: 1
+    pids_limit: 128
+    ports:
+      - ${RELEASE_BIND:-127.0.0.1}:${RELEASE_HTTPS_PORT:-8443}:8443
+    volumes:
+      - ${RELEASE_TLS_ROOT:?Supply trusted server certificate and key}:/etc/nginx/tls:ro
+    depends_on:
+      api: { condition: service_healthy }
+    healthcheck:
+      test: [CMD, nginx, -t]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    restart: unless-stopped
+    stop_grace_period: 10s
+  ops:
+    <<: *api
+    profiles: [operations]
+    environment:
+      <<: *runtime
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ${RELEASE_UPLOAD_ROOT}:/private/uploads
+      - ${RELEASE_MODEL_ROOT}:/private/models:ro
+    depends_on:
+      db: { condition: service_healthy }
+    command: [python, -m, app.cli, maintenance]
+volumes:
+  database:
